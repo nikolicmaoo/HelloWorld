@@ -23,7 +23,8 @@ html {
     color: whitesmoke;
 }
 .nav.navbar-nav a:hover{
-    background-color: rgba(255, 166, 0, 0.466);
+    background-color: rgba(255, 255, 255, 0.493);
+    color: black;
 }
 .icon-bar{
     background-color: whitesmoke;
@@ -44,17 +45,46 @@ html {
     overflow: hidden;
   }
   .prva{
-    padding-top: 250px;
+    padding-top: 220px;
     padding-bottom: 250px;
     text-align: center;
-    background-color: rgba(255, 166, 0, 0.466);
+    background-image: url(/images/cover.jpg);
+    background-size: cover;
+    color: white;
   }
-  @media screen and (max-width: 991px) and (min-width: 767px) {
-    .navbar-nav{
-        font-size: large;
-    }
-   .logo{
-    height: 38px;
-    padding-top: 13px; 
-   }
+.col-lg-4{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+    color: white;
+}
+.col-sm-6{
+    text-align: center;
+    color: white;
+}
+.druga{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+    background-image: url(/images/glasess.jpg);
+    background-size: cover;
+    color:white;
+}
+.dugme{
+    padding: 20px;
+    width: 250px;
+    background-color: transparent;
+    font-size: x-large;
+    color: white;
+    transition-duration: 0.9s;
+}
+.dugme:hover{
+   background-color: black;
+   color: white;
+}
+.col-md-4{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+    font-size: x-large;
 }
