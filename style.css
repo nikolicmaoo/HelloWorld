@@ -69,6 +69,7 @@ html {
     background-image: url(/images/glasess.jpg);
     background-size: cover;
     color:white;
+    background-position: center;
 }
 .dugme{
     padding: 20px;
@@ -84,7 +85,16 @@ html {
 }
 .col-md-4{
     padding-top: 100px;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     text-align: center;
     font-size: x-large;
+}
+.registracija{
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: url(/images/registracija.jpg);
+    background-position: center;
+    background-size: cover;
+    gap: 50px;
 }
