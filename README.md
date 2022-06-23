@@ -6,6 +6,6 @@ Made with HTML, CSS, JavaScript and PHP
 
 It's still in progress
 
-Picures downloaded via https://www.pexels.com/
+Pictures downloaded via https://www.pexels.com/
 
 Icons downloaded via https://icons8.com/
