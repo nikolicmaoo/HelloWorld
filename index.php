@@ -61,22 +61,28 @@
                         Mi smo bezbedno mesto za sve developere gde se možemo družiti, pričati o developmentu ili bilo čime drugom!
                     </h1>
                    <div class="col-lg-4">
+                    <div class="pitanja">
                     <img src="/images/code.png" alt="codeicon">
                     <h2>
                         Pitanja u vezi developmenta!
                     </h2>
+                    </div>
                    </div>
                    <div class="col-lg-4">
+                    <div class="zivota">
                     <img src="/images/face.png" alt="faceicon">
                     <h2>
                     Deljenje svakodnevnog života!
                     </h2>
+                    </div>
                    </div>
                    <div class="col-lg-4">
+                    <div class="sale">
                     <img src="/images/meme.png" alt="memeicon">
                         <h2>
                             Šale na svačiji račun!
                         </h2>
+                   </div>
                    </div>
                 </div>
                 </div>

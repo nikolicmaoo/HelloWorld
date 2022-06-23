@@ -27,8 +27,7 @@ function create_user($firstname, $lastname, $username, $email, $password) {
         $sql .= "VALUES('$firstname','$lastname','$username','images/default.jpg','$email','$password')";
     
         confim(query($sql));
-        set_message("Uspešno ste se registrovali, molimo Vas prijavite se!");
-        redirect("login.php");
+        redirect(location:"uspesno.php");
     }
 
 function validate_user() {
@@ -54,9 +53,6 @@ function validate_user() {
         if(strlen($username) > 20) {
             $errors[] = "Vaše ime ne može sadržati više od 20 karaktera!";
         }
-        if(email_exists($email)) {
-            $errors[] = "Već postoji nalog sa tim email-om!";
-        }
         if(user_exists($username)) {
             $errors[] = "Već postoji korisnik sa istim korisničkim imenom";
         }
@@ -70,46 +66,81 @@ function validate_user() {
             foreach ($errors as $error) {
                 echo "<div class='alert'>" . $error . "</div>";
             }
-        } else {
-            $firstname = filter_var($firstname, htmlspecialchars($firstname));
-            $lastname = filter_var($lastname, htmlspecialchars($lastname));
-            $username = filter_var($username, htmlspecialchars($username));
-            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-            $password = filter_var($password, htmlspecialchars($password));
+        } else{
             create_user($firstname, $lastname, $username, $email, $password);
         }
     }
 }
 
-function clean($string) {
-    return htmlentities($string);
+function clean($str) {
+    return htmlentities($str);
 }
 
-function email_exists($email){
-    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-    $query = "SELECT id FROM users WHERE email = '$email'";
-    $results = query($query);
-
-    if($results->num_rows > 0){
-        return true;
-    } else {
-        return false;
-    }
-    }
-
 function user_exists($user) {
-    $user = filter_var($user, FILTER_SANITIZE_EMAIL);
+    $user = filter_var($user);
     $query = "SELECT id FROM users WHERE username = '$user'";
     $results = query($query);
 
     if ($results->num_rows > 0) {
         return true;
-    } else{
+    } else {
         return false;
     }
 }
 
-function redirect($location){
+function redirect($location) {
     header("location:{$location}");
     exit();
+}
+
+function validate_user_login(){
+    $errors = [];
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST"){
+        $email = clean($_POST['email']);
+        $password = clean($_POST['password']);
+
+        if (empty($email)){
+            $errors[] = "Email polje ne može biti prazno!";
+        }
+        if (empty($password)){
+            $errors[] = "Polje za lozinku ne može biti prazno!";
+        }
+
+        if (empty($errors)){
+            if(user_login($email, $password)){
+                redirect(location:"log.php");
+            } else {
+                $errors[] = "Vaša email adresa ili lozinka nisu ispravne. Pokušajte ponovo!";
+            }
+        }
+
+        if(!empty($errors)){
+            foreach ($errors as $error) {
+                echo '<div class="alert">' . $error . '</div>';
+            }
+        }
+    }
+}
+
+function user_login($email, $password)
+{
+    $password = filter_var($password);
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+    $query = "SELECT * FROM users WHERE email='$email'";
+    $result = query($query);
+
+    if ($result->num_rows == 1) {
+        $data = $result->fetch_assoc();
+
+        if (password_verify($password, $data['password'])) {
+            $_SESSION['email'] = $email;
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
 }

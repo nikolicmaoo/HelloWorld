@@ -2,6 +2,7 @@
     margin: 0;
     padding:0 ;
     font-family: 'Bebas Neue', cursive;
+    color: white;
 }
 html {
     scroll-behavior: smooth;
@@ -96,5 +97,72 @@ html {
     background-image: url(/images/registracija.jpg);
     background-position: center;
     background-size: cover;
-    gap: 50px;
+}
+.uspesno{
+    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-image: url(/images/uspesno.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.onama{
+    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-image: url(/images/prog1.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.onama2{
+    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.onama3{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+    background-image: url(/images/prog2.jpg);
+    background-size: cover;
+    color:white;
+    background-position: center;
+}
+.sale, .pitanja, .zivota{
+    transition-duration: 0.7s;
+}
+.sale:hover{
+    background-image: url(/images/sale.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.pitanja:hover{
+    background-image: url(/images/laptop.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+}
+.zivota:hover{
+    background-image: url(/images/delejnje.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+}
+.login{
+    padding-top: 80px;
+    padding-bottom: 150px;
+    text-align: center;
+    background-image: url(/images/login.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.greska{
+    text-align: center;
+    font-size: xx-large;
 }
