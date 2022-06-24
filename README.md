@@ -2,7 +2,7 @@
 
 
 
-Made with HTML, CSS, JavaScript and PHP
+Made with HTML, CSS, JavaScript and PHP.
 
 It's still in progress
 
