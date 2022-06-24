@@ -1,5 +1,6 @@
 <?php
 
+
 function set_message($message){
     if(!empty($message)) {
         $_SESSION['message'] = $message;
@@ -142,5 +143,62 @@ function user_login($email, $password)
         }
     } else {
         return false;
+    }
+}
+
+function get_user()
+{
+        $query = "SELECT * FROM users WHERE email='" . $_SESSION['email'] . "'";
+        $result = query($query);
+
+       if ($result->num_rows > 0) {
+           return $result->fetch_assoc();
+        } else {
+            return "Korisnik nije pronađen.";
+     }
+    }
+
+function user_profile_image_upload()
+{
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $target_dir = "uploads/";
+        $user = get_user();
+        $user_email = $user['email'];
+        $target_file = $target_dir  . "." .pathinfo(basename($_FILES["profile_image_file"]["name"]), PATHINFO_EXTENSION);;
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $error = "";
+
+        $check = getimagesize($_FILES["profile_image_file"]["tmp_name"]);
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $error = "Fajl nije slika.";
+            $uploadOk = 0;
+        }
+
+        if ($_FILES["profile_image_file"]["size"] > 5000000) {
+            $error = "Fajl je previse velik. Izaberite drugi.";
+            $uploadOk = 0;
+        }
+
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            $error = "Samo fajlovi sa JPG, JPEG, PNG & GIF ekstenzijom su dozvoljeni.";
+            $uploadOk = 0;
+        }
+
+        if ($uploadOk == 0) {
+            set_message('Greška: '. $error);
+        } else {
+            $sql = "UPDATE users SET profileimg='$target_file' WHERE email='$user_email'";
+            query($sql);
+            set_message('Slika je promenjena!');
+
+            if (!move_uploaded_file($_FILES["profile_image_file"]["tmp_name"], $target_file)) {
+                set_message('Greška: '. $error);
+            }
+        }
+
+        redirect('log.php');
     }
 }

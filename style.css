@@ -166,3 +166,49 @@ html {
     text-align: center;
     font-size: xx-large;
 }
+.profile-image{
+    height: 250px;
+    width: 200px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px black;
+}
+.profil{
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background-image: url(/images/profil.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+.feed{
+    padding-top: 70px;
+    padding-bottom: 70px;
+    align-items: center; 
+    justify-content: center; 
+    display:flex;
+    background-image: url(/images/feed.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.development{
+    padding-top: 70px;
+    padding-bottom: 70px;
+    align-items: center; 
+    justify-content: center; 
+    display:flex;
+    background-image: url(/images/development.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.dugme2{
+    padding: 20px;
+    width: 250px;
+    background-color: transparent;
+    font-size: x-large;
+    color: black;
+    transition-duration: 0.9s;
+}
+.dugme2:hover{
+   background-color: black;
+   color: white;
+}
