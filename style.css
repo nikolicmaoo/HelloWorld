@@ -212,3 +212,26 @@ html {
    background-color: black;
    color: white;
 }
+.post{
+text-align: left;
+padding-left: 50px;
+padding-right: 50px;
+border: 2px solid white;
+box-shadow: 5px 5px 5px white;
+background-color: rgb(88, 86, 86);
+margin-left: 80px;
+margin-right: 80px;
+}
+.post img{
+    max-width: 40px;
+}
+.post p{
+    font-size: x-large;
+}
+.likes{
+    text-align: right;
+}
+.komentari{
+    text-align: right;
+    padding-bottom: 10px;
+}

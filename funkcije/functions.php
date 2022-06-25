@@ -213,3 +213,89 @@ function user_profile_image_upload()
         redirect('log.php');
     }
 }
+
+function user_restriction(){
+    if(!isset($_SESSION['email'])){
+        redirect('login.php');
+    }
+}
+
+function create_post(){
+    $errors = [];
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $post_content = clean($_POST['post_content']);
+
+        if (!empty($errors)) {
+            foreach ($errors as $error) {
+                echo '<div class="alert">' . $error . '</div>';
+            }
+        } else {
+            $post_content = filter_var($post_content);
+            $post_content = escape($post_content);
+            $user = get_user();
+            $user_id = $user['id'];
+
+            $sql = "INSERT INTO posts(userid, content) ";
+            $sql .= "VALUES($user_id, '$post_content')";
+            confim(query($sql));
+            set_message('Dodali ste novu objavu!');
+            redirect('development.php');
+        }
+    }
+}
+
+function fetch_all_posts()
+{
+    $query = "SELECT * FROM `posts` ORDER BY `posts`.`id` DESC";
+    $results = query($query);
+    
+
+    if ($results->num_rows > 0) {
+        while ($row = $results->fetch_assoc()) {
+            $user = get_user($row['userid']);
+
+            echo "<div class='post'><br><br><p><img src='" . $user['profileimg'] . "' alt=''><i><b> &nbsp;" . $user['firstname'] . " " . $user['lastname'] . "</b></i></p><br>
+                    <p>" . $row['content'] . "</p><div class='komentari'>  <img src='/images/komentar.png'> </div></div><br><br>";
+        }
+    }
+}
+
+function create_post2(){
+    $errors = [];
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $post_content = clean($_POST['post_content']);
+
+        if (!empty($errors)) {
+            foreach ($errors as $error) {
+                echo '<div class="alert">' . $error . '</div>';
+            }
+        } else {
+            $post_content = filter_var($post_content);
+            $post_content = escape($post_content);
+            $user = get_user();
+            $user_id = $user['id'];
+
+            $sql = "INSERT INTO posts2(userid, content) ";
+            $sql .= "VALUES($user_id, '$post_content')";
+            confim(query($sql));
+            set_message('Dodali ste novu objavu!');
+            redirect('feed.php');
+        }
+    }
+}
+
+function fetch_all_posts2()
+{
+    $query = "SELECT * FROM `posts2` ORDER BY `posts2`.`id` DESC";
+    $results = query($query);
+    
+
+    if ($results->num_rows > 0) {
+        while ($row = $results->fetch_assoc()) {
+            $user = get_user($row['userid']);
+
+            echo "<div class='post'><br><br><p><img src='" . $user['profileimg'] . "' alt=''><i><b> &nbsp;" . $user['firstname'] . " " . $user['lastname'] . "</b></i></p><br>
+                    <p>" . $row['content'] . "</p><div class='komentari'>  <img src='/images/komentar.png'> </div></div><br><br>";
+        }
+    }
+}

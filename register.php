@@ -1,5 +1,5 @@
 <?php
-    include "ponavljajuce/header.php"
+    include "ponavljajuce/header.php";
 ?>
 <?php
 

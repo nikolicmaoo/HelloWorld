@@ -1,5 +1,6 @@
 <?php
-    include "ponavljajuce/logheader.php"
+    include "ponavljajuce/logheader.php";
+    user_restriction();
 ?>
 
 <div class="profil">
