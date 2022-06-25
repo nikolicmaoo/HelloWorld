@@ -23,7 +23,7 @@
                 <a href="https://www.tiktok.com" target="_blank">
                     <img src="/images/tiktok.png" alt="tiktok" style="width:30px; height:30px;">
                 </a>
-                <a href="https://www.github.com" target="_blank">
+                <a href="https://github.com/nikolicmaoo" target="_blank">
                     <img src="/images/github.png" alt="github" style="width:30px; height:30px;">
                 </a>
             </div>

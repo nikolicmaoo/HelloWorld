@@ -130,10 +130,10 @@ function user_login($email, $password)
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
     $query = "SELECT * FROM users WHERE email='$email'";
-    $result = query($query);
+    $results = query($query);
 
-    if ($result->num_rows == 1) {
-        $data = $result->fetch_assoc();
+    if ($results->num_rows == 1) {
+        $data = $results->fetch_assoc();
 
         if (password_verify($password, $data['password'])) {
             $_SESSION['email'] = $email;
@@ -146,25 +146,36 @@ function user_login($email, $password)
     }
 }
 
-function get_user()
+function get_user($id = NULL)
 {
-        $query = "SELECT * FROM users WHERE email='" . $_SESSION['email'] . "'";
-        $result = query($query);
+    if ($id != NULL) {
+        $query = "SELECT * FROM users WHERE id=" . $id;
+        $results = query($query);
 
-       if ($result->num_rows > 0) {
-           return $result->fetch_assoc();
+        if ($results->num_rows > 0) {
+            return $results->fetch_assoc();
         } else {
-            return "Korisnik nije pronađen.";
-     }
+            return "Korisnik nije pronadjen.";
+        }
+    } else {
+        $query = "SELECT * FROM users WHERE email='" . $_SESSION['email'] . "'";
+        $results = query($query);
+
+        if ($results->num_rows > 0) {
+            return $results->fetch_assoc();
+        } else {
+            return "Korisnik nije pronadjen.";
+        }
     }
+}
 
 function user_profile_image_upload()
 {
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
         $target_dir = "uploads/";
         $user = get_user();
-        $user_email = $user['email'];
-        $target_file = $target_dir  . "." .pathinfo(basename($_FILES["profile_image_file"]["name"]), PATHINFO_EXTENSION);;
+        $user_id = $user['id'];
+        $target_file = $target_dir . $user_id . "." .pathinfo(basename($_FILES["profile_image_file"]["name"]), PATHINFO_EXTENSION);;
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $error = "";
@@ -190,7 +201,7 @@ function user_profile_image_upload()
         if ($uploadOk == 0) {
             set_message('Greška: '. $error);
         } else {
-            $sql = "UPDATE users SET profileimg='$target_file' WHERE email='$user_email'";
+            $sql = "UPDATE users SET profileimg='$target_file' WHERE id='$user_id'";
             query($sql);
             set_message('Slika je promenjena!');
 
