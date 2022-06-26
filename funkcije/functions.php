@@ -236,12 +236,13 @@ function create_post(){
             $user_id = $user['id'];
 
             $sql = "INSERT INTO posts(userid, content) ";
-            $sql .= "VALUES($user_id, '$post_content')";
+            $sql .= "VALUES( $user_id, '$post_content')";
             confim(query($sql));
             set_message('Dodali ste novu objavu!');
             redirect('development.php');
         }
-    }
+    }   
+
 }
 
 function fetch_all_posts()
@@ -255,7 +256,7 @@ function fetch_all_posts()
             $user = get_user($row['userid']);
 
             echo "<div class='post'><br><br><p><img src='" . $user['profileimg'] . "' alt=''><i><b> &nbsp;" . $user['firstname'] . " " . $user['lastname'] . "</b></i></p><br>
-                    <p>" . $row['content'] . "</p><div class='komentari'>  <img src='/images/komentar.png'> </div></div><br><br>";
+                    <p>" . $row['content'] . "</p><br></div><br><br>";
         }
     }
 }
@@ -295,7 +296,8 @@ function fetch_all_posts2()
             $user = get_user($row['userid']);
 
             echo "<div class='post'><br><br><p><img src='" . $user['profileimg'] . "' alt=''><i><b> &nbsp;" . $user['firstname'] . " " . $user['lastname'] . "</b></i></p><br>
-                    <p>" . $row['content'] . "</p><div class='komentari'>  <img src='/images/komentar.png'> </div></div><br><br>";
+                    <p>" . $row['content'] . "</p><br></div><br><br>";
         }
     }
 }
+

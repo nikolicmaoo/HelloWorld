@@ -82,7 +82,7 @@
                     <div class="sale">
                     <img src="/images/meme.png" alt="memeicon">
                         <h2>
-                            Šale na svačiji račun!
+                            Šale na tvoj, ali i na tuđi račun!
                         </h2>
                    </div>
                    </div>
