@@ -37,6 +37,7 @@
                     <li><a href="log.php">Profil</a></li>
                     <li><a href="development.php">Development</a></li>
                     <li> <a href="feed.php">Feed</a></li>
+                    <li> <a href="chat.php">Comments</a> </li>
                     <li> <a href="logout.php">Izloguj se</a> </li>
                 </ul>
                 </div>

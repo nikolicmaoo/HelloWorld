@@ -13,13 +13,13 @@ include "ponavljajuce/header.php";
 </div>
 <div data-aos="fade-up">
     <div class="onama2">
-        <h1>
+        <h2>
             Cilj nam je da svim IT-jevcima bilo kog da su senioriteta pomognemo i smanjimo nerviranje na minimum.
-        </h1><br>
-        <h1>
+        </h2><br>
+        <h2>
             Hello World je nastao sasvim slučajno, kao običan projekat na fakultetu. Osnivač je želeo više od samog projekta, zato danas postoji Hello World kao broj jedan
             društvena mreža za developere na Balkanu. 
-        </h1><br>
+        </h2><br>
         <h1>
             Srećni smo što ste sa nama!
         </h1>

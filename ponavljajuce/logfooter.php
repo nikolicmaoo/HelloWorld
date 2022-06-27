@@ -10,6 +10,7 @@
                   <a href="log.php" style="text-decoration:none; color:white;">Profil</a><br>
                   <a href="development.php" style="text-decoration:none; color:white;">Development</a><br>
                   <a href="feed.php" style="text-decoration:none; color:white;">Feed</a><br>
+                  <a href="chat.php" style="text-decoration:none; color:white;">Comments</a> <br>
                   <a href="logout.php" style="text-decoration:none; color:white;">Izloguj se</a>
             </div>
             <div class="col-md-4">
