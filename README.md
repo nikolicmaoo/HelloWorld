@@ -6,7 +6,7 @@ Made with HTML, CSS, Bootstrap, JavaScript and PHP.
 
 It's still in progress, only prototype available.
 
-It's on serbian, sorry fellow english speaker developers!
+It's on serbian, sorry fellow english speaking developers!
 
 Pictures downloaded via https://www.pexels.com/
 
